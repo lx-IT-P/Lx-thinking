@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.CountryDao">  <!-- 必须写接口的全名 -->
+	<!-- 查询所有数据-->
+	<select id="findAll" resultType="entity.Country">
+		select income,countryname from country
+	</select>
+	<!-- 模糊查询 -->
+	<select id="findByNamePku" resultType="entity.Country">
+		select * from pkh where name like "%"#{name}"%"
+	</select>
+
+</mapper>

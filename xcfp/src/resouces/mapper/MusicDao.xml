@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.PkhDao">  <!-- 必须写接口的全名 -->
+	<!-- 查询所有数据-->
+	<select id="findAll" resultType="entity.PkhInformation">
+		select * from pkh
+	</select>
+	<!-- 模糊查询 -->
+	<select id="findByNamePku" resultType="entity.PkhInformation">
+		select * from pkh where name like "%"#{name}"%"
+	</select>
+	<!-- 删除一条数据 -->
+	<delete id="delPku" parameterType="int">
+		delete from pkh where id=#{id}
+	</delete>
+	<!-- 添加数据 -->
+	<insert id="addPku" parameterType="entity.PkhInformation">
+		insert into pkh(name,province,country,city,village,code,time,lxfs,bankname,banknumber,pkyy,familynumber,zfmj,rjcsh,bfdw)
+		values(#{name},#{province},#{country},#{city},#{village},#{code},#{time},#{lxfs},#{bankname},#{banknumber},#{pkyy},#{familynumber},#{zfmj},#{rjcsh},#{bfdw})
+	</insert>
+	<!-- 查询一条数据 -->
+	<select id="findPkuById" resultType="entity.PkhInformation" parameterType="int">
+		select * from pkh where id=#{id}
+	</select>
+	<!-- 修改数据 -->
+	<update id="updatePku" parameterType="entity.PkhInformation">
+		update pkh set name=#{name},province=#{province},city=#{city},country=#{country},village=#{village},code=#{code},time=#{time},lxfs=#{lxfs},bankname=#{bankname},banknumber=#{banknumber},zfmj=#{zfmj},rjcsh=#{rjcsh},bfdw=#{bfdw},familynumber=#{familynumber},pkyy=#{pkyy} where id=#{id}
+	</update>
+	<!-- 模糊查询 -->
+	<select id="selectCity" resultType="entity.PkhInformation">
+		select country,id from pkh
+	</select>
+	<select id="findPkuByCity" resultType="entity.PkhInformation">
+		select * from pkh where rjcsh>10000 and country=#{country}
+	</select>
+	<select id="findTuoPin" resultType="entity.PkhInformation">
+		select * from pkh where rjcsh>10000
+	</select>
+	<select id="findFanPin" resultType="entity.PkhInformation">
+		select * from pkh where rjcsh&lt;10000
+	</select>
+	<select id="findFanPinByCity" resultType="entity.PkhInformation">
+		select * from pkh where rjcsh&lt;10000 and country=#{country}
+	</select>
+	<select id="findFanPinTj" resultType="entity.PkhInformation">
+		SELECT COUNT(*) as countc,country FROM pkh WHERE rjcsh>10000 GROUP  BY  country
+	</select>
+</mapper>

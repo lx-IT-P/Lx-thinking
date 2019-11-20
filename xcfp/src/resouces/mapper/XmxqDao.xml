@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.XmxqDao">  <!-- 必须写接口的全名 -->
+	<!-- 查询所有数据-->
+	<select id="findAll" resultType="entity.xmxq">
+		select * from xmxq
+	</select>
+	<!-- 模糊查询 -->
+	<select id="findByNameXmxq" resultType="entity.xmxq">
+		select * from xmxq where name like "%"#{name}"%"
+	</select>
+</mapper>

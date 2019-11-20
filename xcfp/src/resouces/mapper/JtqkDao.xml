@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.JtqkDao">  <!-- 必须写接口的全名 -->
+	<!-- 查询所有数据-->
+	<select id="findAll" resultType="entity.Jtqk">
+		select * from jtqk
+	</select>
+	<!-- 模糊查询 -->
+	<select id="findByNameJtqk" resultType="entity.Jtqk">
+		select * from jtqk where name like "%"#{name}"%"
+	</select>
+	<!-- 查询一条数据 -->
+	<select id="findJtqkById" resultType="entity.Jtqk" parameterType="int">
+		select * from jtqk where id=#{id}
+	</select>
+</mapper>
