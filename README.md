@@ -1,2 +1,2 @@
 # Lx-thinking
-the first repository
+SSM框架整合
